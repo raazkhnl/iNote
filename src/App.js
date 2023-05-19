@@ -1,23 +1,29 @@
-import './App.css';
+import "./App.css";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import Navbar from './components/Navbar';
-import Home from './components/Home';
-import About from './components/About';
+import Navbar from "./components/Navbar";
+import Home from "./components/Home";
+import About from "./components/About";
+import NoteState from "./context/notes/NoteState";
+import Alert from "./components/Alert";
 
 function App() {
-  return (
-    <>
+	return (
+		<>
+			<NoteState>
 			<Router>
-				<Navbar/>
-        <Home/>
-				{/* <LoadingBar color="#f11946" progress={progress} /> */}
+				<Navbar />
+				<Alert message="Amazing!"/>
+				<div className = "container">
+					{/* <LoadingBar color="#f11946" progress={progress} /> */}
 				<Routes>
-					{/* <Route exact path="/"  /> */}
-					<Route exact path="/about" element={ <About /> } />
+					<Route exact path="/" element={<Home />} />
+					<Route exact path="/about" element={<About />} />
 				</Routes>
+				</div>
 			</Router>
+			</NoteState>
 		</>
-  );
+	);
 }
 
 export default App;
