@@ -1,7 +1,7 @@
 import React, { useContext, useState } from 'react'
 import noteContext from "../context/notes/noteContext"
 
-const AddNote = () => {
+const AddNote = (props) => {
     const context = useContext(noteContext)
     const {addNote}=context;
 
@@ -11,6 +11,8 @@ const AddNote = () => {
         e.preventDefault()  //prevent page reload
          addNote(note.title, note.description, note.tag)
          setNote({title:"", description:"", tag:""})
+         props.showAlert("Note Added Successfully!!", "success")
+
     }
     const onChange=(e)=>{
         setNote({...note, [e.target.name]: e.target.value}) //Any changein value must be added in name
@@ -32,7 +34,7 @@ const AddNote = () => {
             <input type="text" className="form-control" id="tag" name="tag" value={note.tag} onChange={onChange}/>
           </div>
        
-          <button disabled={note.title.length<3 || note.description.length<3} type="submit" className="btn btn-primary" onClick={submitHandler}>Add Note</button>
+          <button disabled={note.title.length<3 || note.description.length<3} type="submit" className="btn btn-primary" onClick={submitHandler} >Add Note</button>
         </form>
 
       </div>

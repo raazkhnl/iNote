@@ -10,7 +10,7 @@ const NoteItem = (props) => {
         <div className="card my-3" >
   <div className="card-body">
     <h5 className="card-title">{note.title}
-    <i className="far fa-trash-alt mx-2" onClick={()=>{deleteNote(note._id)}}></i>
+    <i className="far fa-trash-alt mx-2" onClick={()=>{deleteNote(note._id); props.showAlert("Note Deleted!!", "danger")}}></i>
     <i className="far fa-edit mx-2" onClick={()=>{updateNote(note)}}></i>
     </h5>
     <p className="card-text">{note.description}</p>
