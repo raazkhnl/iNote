@@ -2,6 +2,7 @@
 const express = require('express')
 //Object Data Modeling (ODM) library to enforce a specific schema at the application layer
 const mongoose=require("mongoose");
+var cors = require('cors')
 mongoose.connect('mongodb://localhost:27017/inotebook',{
     useNewUrlParser: true, 
     useUnifiedTopology: true,
@@ -11,6 +12,7 @@ mongoose.connect('mongodb://localhost:27017/inotebook',{
 const app = express() //creates a new instance of the Express application  to configure routes, middleware, and other functionalities 
 const port = 5000
 
+app.use(cors())
 app.use(express.json()) //parses the JSON data in the request body and makes it available in req.body 
 
 //Available Routes

@@ -3,9 +3,6 @@ import { Link , useLocation } from "react-router-dom";
 
 const Navbar = () => {
 	let location = useLocation();
-	React.useEffect(() => {
-		console.log(location.pathname)
-	  }, [location]);
 	
 	return (
 		<nav className="navbar navbar-dark navbar-expand-lg bg-dark">
@@ -61,7 +58,9 @@ const Navbar = () => {
 						</li>
 						
 					</ul>
-					<form className="d-flex" role="search">
+					<Link className="btn btn-primary mx-2" role="button" to={"/login"}>Login</Link>
+					<Link className="btn btn-primary" role="button" to={"/signup"}>Signup</Link>
+					{/* <form className="d-flex" role="search">
 						<input
 							className="form-control me-2"
 							type="search"
@@ -71,7 +70,7 @@ const Navbar = () => {
 						<button className="btn btn-outline-success" type="submit">
 							Search
 						</button>
-					</form>
+					</form> */}
 				</div>
 			</div>
 		</nav>
