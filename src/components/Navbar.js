@@ -1,16 +1,16 @@
 import React from "react";
 import { Link , useLocation, useNavigate } from "react-router-dom";
 
-const Navbar = () => {
+const Navbar = (props) => {
 	let location = useLocation();
 	let navigate = useNavigate();
 	const logoutHandler=()=>{
 		localStorage.removeItem('token')
-		navigate('/login')
+		props.showAlert("Logged Out!!", "danger")
 	}
 	
 	return (
-		<nav className="navbar navbar-dark navbar-expand-lg bg-dark sticky-top">
+		<nav className="navbar navbar-dark navbar-expand-md bg-dark sticky-top">
 			<div className="container-fluid">
 				<Link className="navbar-brand" to="/">
 					iNotes
@@ -40,22 +40,22 @@ const Navbar = () => {
 							>
 								Dropdown
 							</Link>
-							<ul className="dropdown-menu">
-								<li>
-									<Link className="dropdown-item" to="/">
+							<ul className="dropdown-menu bg-dark">
+								<li className="nav-item">
+									<Link className="nav-link" to="/">
 										Action
 									</Link>
 								</li>
-								<li>
-									<Link className="dropdown-item" to="/">
+								<li className="nav-item">
+									<Link className="nav-link " to="/">
 										Another action
 									</Link>
 								</li>
-								<li>
+								<li >
 									<hr className="dropdown-divider" />
 								</li>
-								<li>
-									<Link className="dropdown-item" to="/">
+								<li className="nav-item">
+									<Link className="nav-link" to="/">
 										Something else here
 									</Link>
 								</li>
@@ -63,25 +63,14 @@ const Navbar = () => {
 						</li>
 						
 					</ul>
-					{!localStorage.getItem('token') ? <form>
-					<Link className="btn btn-primary mx-2" role="button" to={"/login"}>Login</Link>
-					<Link className="btn btn-primary" role="button" to={"/signup"}>Signup</Link> </form>:
-					<Link className="btn btn-primary" role="button" onClick={logoutHandler} >Logout</Link> 
+					{!localStorage.getItem('token') ?  <form>
+					<Link className="btn btn-secondary mx-2" role="button" to={"/login"}>Login</Link>
+					<Link className="btn btn-secondary" role="button" to={"/signup"}>Signup</Link></form> : 
+					<Link className="btn btn-secondary" role="button" onClick={logoutHandler} to={"/login"} >Logout</Link>
 
 					
 						}
 					
-					{/* <form className="d-flex" role="search">
-						<input
-							className="form-control me-2"
-							type="search"
-							placeholder="Search"
-							aria-label="Search"
-						/>
-						<button className="btn btn-outline-success" type="submit">
-							Search
-						</button>
-					</form> */}
 				</div>
 			</div>
 		</nav>
